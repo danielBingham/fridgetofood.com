@@ -6,16 +6,6 @@ var config = require('./config');
 module.exports = function(database) {
 
     /******************************************************************************
-     *          Index Route
-     *
-     * The index route needs to return the html, css, and javascript for the SPA
-     * front end.  It isn't considered a RESTful route in this case.
-     ******************************************************************************/
-    router.get('/', function(request, response) {
-      response.render('index', { title: 'Express' });
-    });
-
-    /******************************************************************************
      *          Recipe REST Routes
      ******************************************************************************/
 
