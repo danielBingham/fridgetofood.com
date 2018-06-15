@@ -8,7 +8,7 @@
     "build": "webpack --mode production",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "server": "nodemon ./server/bin/www",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "export NODE_ENV=hot-dev && concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
