@@ -48,14 +48,16 @@ module.exports = function(database) {
 
     // Create a new recipe
     router.post('/recipes', function(request, response) {
+        var recipe = request.body;
         database.query(
             'insert into recipes (title, source_url, created_date, update_date) values (?, ?, now(), now())', 
-            [request.params.title, request.params.source_url], 
+            [recipe.title, recipe.source_url], 
             function(error, results, fields) {
                 if ( error ) {
                     throw error;
                 }
-                response.json({success: true, id: results.insertId});
+                recipe.id = results.insertId;
+                response.json(recipe);
             }
         );
     });
