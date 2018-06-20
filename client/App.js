@@ -25,7 +25,7 @@ export default class App extends Component {
      */
     render() {
         return (
-            <section class="app">
+            <section className="app">
                 <header>
                     <h1>Fridge to Food</h1>
                 </header>

@@ -4,42 +4,18 @@ class RecipeForm extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            recipes: null
-        };
-        this.loadRecipes = this.loadRecipes.bind(this);
-
-    }
-
-    loadRecipes(recipes) {
-        this.setState({recipes: recipes});
-    }
-
-    componentDidMount() {
-        fetch('/api/v0/recipes/')
-            .then(res => res.json())
-            .then(this.loadRecipes);
     }
 
     render() {
-        if ( this.state.recipes === null ) {
-            return (
-                <section className="recipes loading">
-                    Loading...
-                </section>
-            );
-        } else {
-            const recipes = this.state.recipes;
-            return (
-                <section className="recipes">
-                    {recipes.map(function(recipe, i) {
-                        return (<RecipeBox recipe={recipe}  key={recipe.id} />);
-                    })}
-                </section>
-            );
-        }
+        return (
+            <form onSubmit={this.props.handleSubmit} className="recipe-form">
+                <label htmlFor="title">Title</label><input name="title" value={this.props.recipe.title} onChange={this.props.handleChange} />
+                <label htmlFor="source_url">Source</label><input name="source_url" value={this.props.recipe.source_url} onChange={this.props.handleChange} />
+                <input type="submit" value="Add Recipe" />
+            </form>
+        );
     }
 
 }
 
-export default Recipe
+export default RecipeForm
